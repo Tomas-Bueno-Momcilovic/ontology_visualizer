@@ -1,0 +1,442 @@
+{
+  "baseIRI": "http://www.semanticweb.org/momcilovic/ontologies/2023/12/grenke_world",
+  "namespaces": {
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "world": "http://www.semanticweb.org/momcilovic/ontologies/2023/12/grenke_world#"
+  },
+  "subjectMappings": [
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdfs",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Reference",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "de"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "world",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "fullText"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Text (DE)",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "de"
+                  }
+                }
+              }
+            },
+            {
+              "valueSource": {
+                "columnName": "Text (EN)",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "en"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "world",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasSource"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "world",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "source": "constant",
+                "constant": "MaRisk"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "world",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasRefNum"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Reference",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "string"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "world",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "chapterReference"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Chapter",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "string"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "world",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "paragraphReference"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"Paragraph \" + cells[\"Reference\"].value.split(\".\")[-1]",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "string"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "world",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "subchapterReference"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Subchapter",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "string"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "world",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "subsubchapterReference"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Subsubchapter",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "string"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "world",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "partReference"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "cells[\"Reference\"].value.split(\" \")[1].split(\".\")[0]",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "string"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "world",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "Reference",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "world",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Reference"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "world",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "fullText"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Erlauterung (DE)",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "de"
+                  }
+                }
+              }
+            },
+            {
+              "valueSource": {
+                "columnName": "Erlauterung (EN)",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "en"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "world",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "interprets"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "world",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "explains",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "world",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "Erlauterung Reference",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "world",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Reference"
+          }
+        }
+      ]
+    }
+  ]
+}

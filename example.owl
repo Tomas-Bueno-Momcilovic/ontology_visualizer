@@ -1,0 +1,375 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.org/"
+     xml:base="http://example.org/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+    <owl:Ontology rdf:about="http://example.org/">
+        <rdfs:comment>This ontology models a company's organizational structure, including employees, departments, projects, and more.</rdfs:comment>
+    </owl:Ontology>
+
+    <!-- Classes -->
+    <owl:Class rdf:about="http://example.org/Person">
+        <rdfs:label>Person</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment>An individual human being within the organization.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/Employee">
+        <rdfs:subClassOf rdf:resource="http://example.org/Person"/>
+        <rdfs:label>Employee</rdfs:label>
+        <rdfs:comment>An employee of the company.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/Manager">
+        <rdfs:subClassOf rdf:resource="http://example.org/Employee"/>
+        <rdfs:label>Manager</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/Department">
+        <rdfs:label>Department</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/Company">
+        <rdfs:label>Company</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/Project">
+        <rdfs:label>Project</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/Task">
+        <rdfs:label>Task</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/Skill">
+        <rdfs:label>Skill</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/Location">
+        <rdfs:label>Location</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+
+    <!-- Additional Subclasses -->
+    <owl:Class rdf:about="http://example.org/Engineer">
+        <rdfs:subClassOf rdf:resource="http://example.org/Employee"/>
+        <rdfs:label>Engineer</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/SoftwareEngineer">
+        <rdfs:subClassOf rdf:resource="http://example.org/Engineer"/>
+        <rdfs:label>Software Engineer</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/HardwareEngineer">
+        <rdfs:subClassOf rdf:resource="http://example.org/Engineer"/>
+        <rdfs:label>Hardware Engineer</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/Intern">
+        <rdfs:subClassOf rdf:resource="http://example.org/Employee"/>
+        <rdfs:label>Intern</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/ProjectManager">
+        <rdfs:subClassOf rdf:resource="http://example.org/Manager"/>
+        <rdfs:label>Project Manager</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/SeniorManager">
+        <rdfs:subClassOf rdf:resource="http://example.org/Manager"/>
+        <rdfs:label>Senior Manager</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/Director">
+        <rdfs:subClassOf rdf:resource="http://example.org/SeniorManager"/>
+        <rdfs:label>Director</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/Executive">
+        <rdfs:subClassOf rdf:resource="http://example.org/Director"/>
+        <rdfs:label>Executive</rdfs:label>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="http://example.org/worksFor">
+        <rdfs:label>worksFor</rdfs:label>
+        <rdfs:comment>Indicates the company an employee works for.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://example.org/manages">
+        <rdfs:label>manages</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://example.org/memberOf">
+        <rdfs:label>memberOf</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://example.org/reportsTo">
+        <rdfs:label>reportsTo</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://example.org/hasColleague">
+        <rdfs:label>hasColleague</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://example.org/assignedTo">
+        <rdfs:label>assignedTo</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://example.org/hasSkill">
+        <rdfs:label>hasSkill</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://example.org/locatedIn">
+        <rdfs:label>locatedIn</rdfs:label>
+    </owl:ObjectProperty>
+
+    <!-- Data Properties -->
+    <owl:DatatypeProperty rdf:about="http://example.org/hasName">
+        <rdfs:label>hasName</rdfs:label>
+        <rdfs:comment>The name of an individual or entity.</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.org/age">
+        <rdfs:label>age</rdfs:label>
+        <rdfs:domain rdf:resource="http://example.org/Person"/>
+        <rdfs:range rdf:resource="xsd:integer"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.org/salary">
+        <rdfs:label>salary</rdfs:label>
+        <rdfs:domain rdf:resource="http://example.org/Employee"/>
+        <rdfs:range rdf:resource="xsd:decimal"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hasSkillLevel">
+        <rdfs:label>hasSkillLevel</rdfs:label>
+        <rdfs:domain rdf:resource="http://example.org/Skill"/>
+        <rdfs:range rdf:resource="xsd:string"/>
+    </owl:DatatypeProperty>
+
+    <!-- Individuals -->
+    <!-- Persons -->
+    <rdf:Description rdf:about="http://example.org/Alice">
+        <rdf:type rdf:resource="http://example.org/Manager"/>
+        <rdfs:label>Alice</rdfs:label>
+        <age rdf:datatype="xsd:integer">45</age>
+        <salary rdf:datatype="xsd:decimal">90000.00</salary>
+        <hasName>Alice Smith</hasName>
+        <rdfs:comment>Alice is a manager in the IT department with over 20 years of experience.</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://example.org/Bob">
+        <rdf:type rdf:resource="http://example.org/SoftwareEngineer"/>
+        <rdfs:label>Bob</rdfs:label>
+        <age rdf:datatype="xsd:integer">30</age>
+        <salary rdf:datatype="xsd:decimal">60000.00</salary>
+        <hasName>Bob Johnson</hasName>
+        <rdfs:comment>Bob is a skilled software engineer specializing in backend development.</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://example.org/Charlie">
+        <rdf:type rdf:resource="http://example.org/HardwareEngineer"/>
+        <rdfs:label>Charlie</rdfs:label>
+        <age rdf:datatype="xsd:integer">28</age>
+        <salary rdf:datatype="xsd:decimal">58000.00</salary>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://example.org/Dave">
+        <rdf:type rdf:resource="http://example.org/ProjectManager"/>
+        <rdfs:label>Dave</rdfs:label>
+        <age rdf:datatype="xsd:integer">35</age>
+        <salary rdf:datatype="xsd:decimal">65000.00</salary>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://example.org/Eve">
+        <rdf:type rdf:resource="http://example.org/SeniorManager"/>
+        <rdfs:label>Eve</rdfs:label>
+        <age rdf:datatype="xsd:integer">50</age>
+        <salary rdf:datatype="xsd:decimal">95000.00</salary>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://example.org/Frank">
+        <rdf:type rdf:resource="http://example.org/Intern"/>
+        <rdfs:label>Frank</rdfs:label>
+        <age rdf:datatype="xsd:integer">22</age>
+        <salary rdf:datatype="xsd:decimal">40000.00</salary>
+    </rdf:Description>
+
+    <!-- Departments -->
+    <rdf:Description rdf:about="http://example.org/IT_Department">
+        <rdf:type rdf:resource="http://example.org/Department"/>
+        <rdfs:label>IT Department</rdfs:label>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://example.org/HR_Department">
+        <rdf:type rdf:resource="http://example.org/Department"/>
+        <rdfs:label>HR Department</rdfs:label>
+    </rdf:Description>
+
+    <!-- Company -->
+    <rdf:Description rdf:about="http://example.org/ACME_Corp">
+        <rdf:type rdf:resource="http://example.org/Company"/>
+        <rdfs:label>ACME Corp</rdfs:label>
+    </rdf:Description>
+
+    <!-- Projects -->
+    <rdf:Description rdf:about="http://example.org/Project_X">
+        <rdf:type rdf:resource="http://example.org/Project"/>
+        <rdfs:label>Project X</rdfs:label>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://example.org/Project_Y">
+        <rdf:type rdf:resource="http://example.org/Project"/>
+        <rdfs:label>Project Y</rdfs:label>
+    </rdf:Description>
+
+    <!-- Tasks -->
+    <rdf:Description rdf:about="http://example.org/Task_Alpha">
+        <rdf:type rdf:resource="http://example.org/Task"/>
+        <rdfs:label>Task Alpha</rdfs:label>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://example.org/Task_Beta">
+        <rdf:type rdf:resource="http://example.org/Task"/>
+        <rdfs:label>Task Beta</rdfs:label>
+    </rdf:Description>
+
+    <!-- Skills -->
+    <rdf:Description rdf:about="http://example.org/Skill_Java">
+        <rdf:type rdf:resource="http://example.org/Skill"/>
+        <rdfs:label>Java</rdfs:label>
+        <hasSkillLevel rdf:datatype="xsd:string">Expert</hasSkillLevel>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://example.org/Skill_Python">
+        <rdf:type rdf:resource="http://example.org/Skill"/>
+        <rdfs:label>Python</rdfs:label>
+        <hasSkillLevel rdf:datatype="xsd:string">Intermediate</hasSkillLevel>
+    </rdf:Description>
+
+    <!-- Locations -->
+    <rdf:Description rdf:about="http://example.org/New_York">
+        <rdf:type rdf:resource="http://example.org/Location"/>
+        <rdfs:label>New York</rdfs:label>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://example.org/San_Francisco">
+        <rdf:type rdf:resource="http://example.org/Location"/>
+        <rdfs:label>San Francisco</rdfs:label>
+    </rdf:Description>
+
+    <!-- Relationships -->
+    <!-- Alice manages the IT Department -->
+    <rdf:Description rdf:about="http://example.org/Alice">
+        <manages rdf:resource="http://example.org/IT_Department"/>
+        <worksFor rdf:resource="http://example.org/ACME_Corp"/>
+        <hasSkill rdf:resource="http://example.org/Skill_Java"/>
+        <locatedIn rdf:resource="http://example.org/New_York"/>
+        <reportsTo rdf:resource="http://example.org/Eve"/> <!-- Added this to fix the path -->
+    </rdf:Description>
+
+    <!-- Bob works in IT Department and reports to Alice -->
+    <rdf:Description rdf:about="http://example.org/Bob">
+        <memberOf rdf:resource="http://example.org/IT_Department"/>
+        <reportsTo rdf:resource="http://example.org/Alice"/>
+        <worksFor rdf:resource="http://example.org/ACME_Corp"/>
+        <assignedTo rdf:resource="http://example.org/Project_X"/>
+        <hasSkill rdf:resource="http://example.org/Skill_Python"/>
+        <locatedIn rdf:resource="http://example.org/San_Francisco"/>
+    </rdf:Description>
+
+    <!-- Charlie works in IT Department and reports to Alice -->
+    <rdf:Description rdf:about="http://example.org/Charlie">
+        <memberOf rdf:resource="http://example.org/IT_Department"/>
+        <reportsTo rdf:resource="http://example.org/Alice"/>
+        <worksFor rdf:resource="http://example.org/ACME_Corp"/>
+        <assignedTo rdf:resource="http://example.org/Project_Y"/>
+        <hasSkill rdf:resource="http://example.org/Skill_Java"/>
+        <locatedIn rdf:resource="http://example.org/New_York"/>
+    </rdf:Description>
+
+    <!-- Dave works in HR Department and reports to Eve -->
+    <rdf:Description rdf:about="http://example.org/Dave">
+        <memberOf rdf:resource="http://example.org/HR_Department"/>
+        <reportsTo rdf:resource="http://example.org/Eve"/>
+        <worksFor rdf:resource="http://example.org/ACME_Corp"/>
+        <assignedTo rdf:resource="http://example.org/Project_Y"/>
+        <locatedIn rdf:resource="http://example.org/San_Francisco"/>
+    </rdf:Description>
+
+    <!-- Eve manages the HR Department -->
+    <rdf:Description rdf:about="http://example.org/Eve">
+        <manages rdf:resource="http://example.org/HR_Department"/>
+        <worksFor rdf:resource="http://example.org/ACME_Corp"/>
+        <hasSkill rdf:resource="http://example.org/Skill_Python"/>
+        <locatedIn rdf:resource="http://example.org/New_York"/>
+        <reportsTo rdf:resource="http://example.org/Grace"/> <!-- Added for hierarchy -->
+    </rdf:Description>
+
+    <!-- New Individual: Grace (Director) -->
+    <rdf:Description rdf:about="http://example.org/Grace">
+        <rdf:type rdf:resource="http://example.org/Director"/>
+        <rdfs:label>Grace</rdfs:label>
+        <age rdf:datatype="xsd:integer">55</age>
+        <salary rdf:datatype="xsd:decimal">120000.00</salary>
+        <worksFor rdf:resource="http://example.org/ACME_Corp"/>
+        <locatedIn rdf:resource="http://example.org/New_York"/>
+    </rdf:Description>
+
+    <!-- Frank reportsTo Bob (to fix the path) -->
+    <rdf:Description rdf:about="http://example.org/Frank">
+        <memberOf rdf:resource="http://example.org/IT_Department"/>
+        <reportsTo rdf:resource="http://example.org/Bob"/> <!-- Added this relationship -->
+        <worksFor rdf:resource="http://example.org/ACME_Corp"/>
+        <assignedTo rdf:resource="http://example.org/Project_X"/>
+        <hasSkill rdf:resource="http://example.org/Skill_Python"/>
+        <locatedIn rdf:resource="http://example.org/San_Francisco"/>
+    </rdf:Description>
+
+    <!-- Colleague relationships -->
+    <rdf:Description rdf:about="http://example.org/Bob">
+        <hasColleague rdf:resource="http://example.org/Charlie"/>
+        <hasColleague rdf:resource="http://example.org/Frank"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://example.org/Charlie">
+        <hasColleague rdf:resource="http://example.org/Bob"/>
+        <hasColleague rdf:resource="http://example.org/Frank"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://example.org/Frank">
+        <hasColleague rdf:resource="http://example.org/Bob"/>
+        <hasColleague rdf:resource="http://example.org/Charlie"/>
+    </rdf:Description>
+
+    <!-- Cross-department reporting -->
+    <rdf:Description rdf:about="http://example.org/Alice">
+        <reportsTo rdf:resource="http://example.org/Eve"/>
+    </rdf:Description>
+
+    <!-- Company hierarchy -->
+    <rdf:Description rdf:about="http://example.org/ACME_Corp">
+        <manages rdf:resource="http://example.org/IT_Department"/>
+        <manages rdf:resource="http://example.org/HR_Department"/>
+        <locatedIn rdf:resource="http://example.org/New_York"/>
+    </rdf:Description>
+
+    <!-- Project assignments -->
+    <rdf:Description rdf:about="http://example.org/Project_X">
+        <assignedTo rdf:resource="http://example.org/IT_Department"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://example.org/Project_Y">
+        <assignedTo rdf:resource="http://example.org/HR_Department"/>
+    </rdf:Description>
+
+</rdf:RDF>

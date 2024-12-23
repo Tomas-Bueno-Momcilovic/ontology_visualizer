@@ -1,0 +1,177 @@
+@base <http://www.semanticweb.org/momcilovic/ontologies/2024/0/actfast> .
+@prefix actfast: <http://www.semanticweb.org/momcilovic/ontologies/2024/0/actfast#> .
+@prefix gsn: <http://www.semanticweb.org/momcilovic/ontologies/2024/1/gsn#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+actfast:G1 a gsn:Goal;
+  rdfs:label "G1"@en;
+  actfast:Text "G1: Demonstrate that the LLM used for code translation is robust."@en;
+  gsn:supportedBy actfast:S1;
+  gsn:inContextOf actfast:C1 .
+
+actfast:C1 a gsn:Context;
+  rdfs:label "C1"@en;
+  actfast:Text "C1: The context includes the range of source and target languages supported by the LLM."@en .
+
+actfast:S1 a gsn:Strategy;
+  rdfs:label "S1"@en;
+  actfast:Text "S1: Break down robustness into specific attributes that can be individually assessed."@en;
+  gsn:supportedBy actfast:G1.4, actfast:G1.5;
+  gsn:inContextOf actfast:J1 .
+
+actfast:J1 a gsn:Justification;
+  rdfs:label "J1"@en;
+  actfast:Text "J1: Robustness requires both syntactic and semantic accuracy to ensure functional equivalence."@en .
+
+actfast:G1.4 a gsn:Goal;
+  rdfs:label "G1.4"@en;
+  actfast:Text "G1.4:  The LLM preserves semantic meaning in translation."@en .
+
+actfast:G1.5 a gsn:Goal;
+  rdfs:label "G1.5"@en;
+  actfast:Text "G1.5: The LLM is resistant to adversarial attacks during code translation."@en;
+  gsn:supportedBy actfast:S1.5;
+  gsn:inContextOf actfast:C1.5 .
+
+actfast:C1.5 a gsn:Context;
+  rdfs:label "C1.5"@en;
+  actfast:Text "C1.5: The scenario centers on a C++ to Python translation of a code snippet that calculates the factorial of a number"@en;
+  gsn:inContextOf actfast:Code1, actfast:Code2 .
+
+actfast:Code1 a gsn:CodeSnippet;
+  rdfs:label "Code1"@en;
+  actfast:Text """#include <iostream>
+using namespace std;
+
+int factorial(int n) {
+    if (n == 0) return 1;
+    return n * factorial(n - 1);
+}
+
+int main() {
+    int number;
+    cout << \"Enter a number: \";
+    cin >> number;
+    cout << \"Factorial of \" << number << \" is \" << factorial(number) << endl;
+    return 0;
+}"""@en .
+
+actfast:Code2 a gsn:CodeSnippet;
+  rdfs:label "Code2"@en;
+  actfast:Text """def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+number = int(input(\"Enter a number: \"))
+print(f\"Factorial of {number} is {factorial(number)}\")"""@en .
+
+actfast:S1.5 a gsn:Strategy;
+  rdfs:label "S1.5"@en;
+  actfast:Text "S1.5: Implement and validate protection mechanisms against adversarial attacks: perplexity filters, paraphrasing filters, and code analysis tools."@en;
+  gsn:supportedBy actfast:G1.5.1, actfast:G1.5.2, actfast:G1.5.3, actfast:G1.5.4, actfast:G1.5.5 .
+
+actfast:G1.5.1 a gsn:Goal;
+  rdfs:label "G1.5.1"@en;
+  actfast:Text "G1.5.1: Implement perplexity filters to identify and mitigate inputs likely to cause incorrect translations."@en;
+  gsn:supportedBy actfast:Sn1.5.1 .
+
+actfast:Sn1.5.1 a gsn:Solution;
+  rdfs:label "Sn1.5.1"@en;
+  actfast:Text "Sn1.5.1: Documentation of perplexity threshold settings and testing outcomes showing effectiveness in filtering out adversarial inputs."@en .
+
+actfast:G1.5.2 a gsn:Goal;
+  rdfs:label "G1.5.2"@en;
+  actfast:Text "G1.5.2: Use paraphrasing filters to reformulate inputs in a way that reduces the chance of exploiting model vulnerabilities."@en;
+  gsn:supportedBy actfast:Sn1.5.2 .
+
+actfast:Sn1.5.2 a gsn:Solution;
+  rdfs:label "Sn1.5.2"@en;
+  actfast:Text "Sn1.5.2: Case studies demonstrating how paraphrasing input code has prevented known adversarial attacks."@en .
+
+actfast:G1.5.3 a gsn:Goal;
+  rdfs:label "G1.5.3"@en;
+  actfast:Text "G1.5.3: Apply code analysis tools post-translation to verify the correctness and safety of the output code."@en;
+  gsn:supportedBy actfast:Sn1.5.3 .
+
+actfast:Sn1.5.3 a gsn:Solution;
+  rdfs:label "Sn1.5.3"@en;
+  actfast:Text "Sn1.5.3: Examples of code analysis tools identifying and correcting potential vulnerabilities in translated code."@en;
+  gsn:supportedBy actfast:Sn1.5.3.1 .
+
+actfast:Sn1.5.3.1 a gsn:Solution;
+  rdfs:label "Sn1.5.3.1"@en;
+  actfast:Text "Sn1.5.3.1: Result of the test of translated code with CodeQL Python query for detecting CWE-943 (NoSqlInjection.ql)"@en;
+  gsn:supportedBy actfast:Code3 .
+
+actfast:Code3 a gsn:Solution;
+  rdfs:label "Code3"@en;
+  actfast:Text """import python
+import semmle.python.security.dataflow.NoSqlInjectionQuery
+import NoSqlInjectionFlow::PathGraph
+
+from NoSqlInjectionFlow::PathNode source, NoSqlInjectionFlow::PathNode sink
+where NoSqlInjectionFlow::flowPath(source, sink)
+select sink.getNode(), source, sink, \"This NoSQL query contains an unsanitized $@.\", source,
+  \"user-provided value\""""@en .
+
+actfast:G1.5.4 a gsn:Goal;
+  rdfs:label "G1.5.4"@en;
+  actfast:Text "G1.5.4: The LLM ensures input validation and error handling in translated code to protect against manipulation attacks."@en;
+  gsn:supportedBy actfast:Sn1.5.4;
+  gsn:inContextOf actfast:CC1.5.4 .
+
+actfast:CC1.5.4 a gsn:Counterclaim;
+  rdfs:label "CC1.5.4"@en;
+  actfast:Text "CC1.5.4: Input manipulation attack - An adversary could exploit the input handling in the Python translation, providing inputs that cause the program to crash or behave unpredictably (e.g., entering a string instead of an integer)."@en .
+
+actfast:Sn1.5.4 a gsn:Solution;
+  rdfs:label "Sn1.5.4"@en;
+  actfast:Text "Sn1.5.4: Example code and tests demonstrating input validation and error handling features in translated Python code."@en;
+  gsn:supportedBy actfast:Sn1.5.4.1 .
+
+actfast:Sn1.5.4.1 a gsn:Solution;
+  rdfs:label "Sn1.5.4.1"@en;
+  actfast:Text "Sn1.5.4.1: Add input validation to the Python code to ensure only integers are accepted, and provide a user-friendly error message for invalid inputs."@en;
+  gsn:supportedBy actfast:Code4 .
+
+actfast:Code4 a gsn:Solution;
+  rdfs:label "Code4"@en;
+  actfast:Text """def get_integer_input(prompt):
+    while True:
+        try:
+            return int(input(prompt))
+        except ValueError:
+            print(\"Please enter a valid integer.\")
+
+number = get_integer_input(\"Enter a number: \")"""@en .
+
+actfast:G1.5.5 a gsn:Goal;
+  rdfs:label "G1.5.5"@en;
+  actfast:Text "G1.5.5: The LLM incorporates logic to prevent or mitigate the effects of overflow attacks in translated code."@en;
+  gsn:supportedBy actfast:Sn1.5.5;
+  gsn:inContextOf actfast:CC1.5.5 .
+
+actfast:CC1.5.5 a gsn:Counterclaim;
+  rdfs:label "CC1.5.5"@en;
+  actfast:Text "CC1.5.5: Overflow attack - By entering a very large number, an adversary might attempt to cause an integer overflow or a stack overflow due to deep recursion in the factorial calculation, potentially crashing the program or causing it to hang."@en .
+
+actfast:Sn1.5.5 a gsn:Solution;
+  rdfs:label "Sn1.5.5"@en;
+  actfast:Text "Sn1.5.5: Documentation and test results showing how translated code handles potential overflow scenarios."@en;
+  gsn:supportedBy actfast:Sn1.5.5.1 .
+
+actfast:Sn1.5.5.1 a gsn:Solution;
+  rdfs:label "Sn1.5.5.1"@en;
+  actfast:Text "Sn1.5.5.1: Introduce checks to limit the depth of recursion or convert the recursive factorial function into an iterative version to avoid stack overflow."@en;
+  gsn:supportedBy actfast:Code5 .
+
+actfast:Code5 a gsn:Solution;
+  rdfs:label "Code5"@en;
+  actfast:Text """def factorial(n):
+    if n < 0: return \"Error: Negative number\"
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result"""@en .
